@@ -1,0 +1,3 @@
+C:\Users\Manuel Angel\source\repos\SFML Proyecto\Release\SFML Proyecto.exe
+D:\Escritorio\SFML PONG\Release\SFML Proyecto.exe
+D:\Escritorio\PoolAlgebra\SFML Pool\Release\SFML Proyecto.exe
