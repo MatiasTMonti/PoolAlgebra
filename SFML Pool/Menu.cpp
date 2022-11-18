@@ -13,9 +13,9 @@ Menu::Menu()
 	background.setPosition(500.f, 225.f);
 	background.setFillColor(sf::Color(0, 0, 0, 100));
 
-	Button* btnContinue = new Button("Continue", sf::Vector2f(700.f, 250.f));
-	Button* btnNewGame = new Button("New Game", sf::Vector2f(700.f, 350.f));
-	Button* btnExit = new Button("Exit", sf::Vector2f(700.f, 550.f));
+	Button* btnContinue = new Button("Continuar", sf::Vector2f(700.f, 250.f));
+	Button* btnNewGame = new Button("Nuevo Juego", sf::Vector2f(700.f, 350.f));
+	Button* btnExit = new Button("Salir", sf::Vector2f(700.f, 550.f));
 	buttons.insert(std::pair<Button::btnType, Button*>(Button::CONTINUE, btnContinue));
 	buttons.insert(std::pair<Button::btnType, Button*>(Button::NEW_GAME, btnNewGame));
 	buttons.insert(std::pair<Button::btnType, Button*>(Button::EXIT, btnExit));

@@ -19,14 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
