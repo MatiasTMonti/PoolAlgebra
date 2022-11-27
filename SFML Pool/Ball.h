@@ -14,7 +14,7 @@ class Ball : public sf::Drawable
 {
 private:
 	unsigned int MAX_POINTS;
-	float VISCOSITY;
+	float Friction;
 	sf::VertexArray m_vertices;
 	sf::Color COLOR_SHAPE;
 	sf::Color m_color;

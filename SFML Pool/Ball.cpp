@@ -6,7 +6,7 @@
 void Ball::initVariables()
 {
 	MAX_POINTS = 20;
-	VISCOSITY = 1.f;
+	Friction = 1.f;
 	COLOR_SHAPE = sf::Color::Red;
 
 	m_radius = 10.f;
@@ -104,7 +104,7 @@ const sf::Vector2f Ball::getVelocity() const
 
 void Ball::updateVelocity(float deltaTime)
 {
-	m_acceleration = -m_velocity * VISCOSITY;
+	m_acceleration = -m_velocity * Friction;
 	m_velocity += m_acceleration * deltaTime;
 	setPosition(m_center.x + m_velocity.x * deltaTime, m_center.y + m_velocity.y * deltaTime);
 	setAngle(atan2f(m_velocity.y, m_velocity.x) * 180.f / M_PI);

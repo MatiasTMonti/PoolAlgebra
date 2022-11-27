@@ -358,7 +358,7 @@ void Game::update()
 
 void Game::render()
 {
-	window->clear(sf::Color(75, 103, 163));
+	window->clear(sf::Color(0, 100, 0));
 
 	board->render(window);
 	for (auto i : whiteBalls)
