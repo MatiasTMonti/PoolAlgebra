@@ -1,5 +1,4 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -20,12 +19,14 @@ class Button : public sf::Drawable
 public:
 	Button(std::string, sf::Vector2f pos);
 	~Button();
-
+	//Colocar la posicion del boton.
 	void setPosition(float x, float y);
-
+	//Chequea si el mouse esta en el boton.
 	bool mouseCheck(sf::Vector2f mouse);
 	bool pressed;
+	//Verifica si el mouse interacciono o no con el boton.
 	void updateEvent(sf::Vector2f mouse, sf::Event event);
+	//Updatea el chequeo y verificacion entre el mouse y el boton a tiempo real.
 	void update(sf::Vector2f mouse, sf::Event event);
 
 	enum btnType
@@ -39,9 +40,7 @@ private:
 	sf::RectangleShape shape;
 	sf::Text text;
 	sf::Font font;
-
+	//Dibuja el boton.
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
-
-#endif
 

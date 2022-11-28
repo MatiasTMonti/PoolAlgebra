@@ -1,5 +1,4 @@
-#ifndef LINE_H
-#define LINE_H
+#pragma once
 
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Drawable.hpp>
@@ -23,15 +22,9 @@ public:
 
 	sf::VertexArray getPoints();
 
-	void update();
-	void render(sf::RenderTarget& target);
-
 private:
 	sf::VertexArray m_points;
 	sf::Color m_color;
+	//Muestra la linea que muestra la direccion de donde va la pelota.
 	virtual void	draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
-
-
-#endif
-

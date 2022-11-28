@@ -1,3 +1,4 @@
+#pragma once
 #include "GUI.h"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -16,26 +17,26 @@ GUI::GUI()
 
 	player1.numberText.setFont(font);
 	player1.pointsText.setFont(font);
-	player1.numberText.setString("Jugador 1");
+	player1.numberText.setString("Jugador 1:");
 	player1.numberText.setPosition(200, 100);
 	player1.numberText.setCharacterSize(40);
 
 	player1.pointsText.setCharacterSize(35);
 	player1.pointsText.setString(std::to_string(player1.points));
-	player1.pointsText.setPosition(250, 170);
+	player1.pointsText.setPosition(400, 105);
 
 	player2.points = 0;
 	player2.number = 1;
 
 	player2.numberText.setFont(font);
 	player2.pointsText.setFont(font);
-	player2.numberText.setString("Jugador 2\n");
-	player2.numberText.setPosition(1250, 100);
+	player2.numberText.setString("Jugador 2:\n");
+	player2.numberText.setPosition(200, 200);
 	player2.numberText.setCharacterSize(40);
 
 	player2.pointsText.setCharacterSize(35);
 	player2.pointsText.setString(std::to_string(player2.points));
-	player2.pointsText.setPosition(1300, 170);
+	player2.pointsText.setPosition(400, 205);
 
 	currentPlayer = player1;
 	gamePaused = false;
@@ -45,6 +46,7 @@ GUI::~GUI()
 {
 
 }
+
 
 void GUI::setCurrentPlayer(Player player)
 {

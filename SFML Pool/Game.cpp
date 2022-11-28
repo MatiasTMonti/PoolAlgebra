@@ -39,7 +39,7 @@ void Game::initGame()
 	gui = new GUI();
 	board = new Board();
 	black = new Ball(sf::Vector2f(800, 500), ballRadius, sf::Color::Black);
-	//initialization whiteBalls field
+	//Inicializacion de las pelotas blancas
 	for (int i = 0; i != 5; i++)
 	{
 		for (int j = 0; j != i + 1; j++)
@@ -89,6 +89,7 @@ void Game::restart()
 	black->setPosition(800, 500);
 	black->setVelocity(sf::Vector2f(0.f, 0.f));
 	int count = 0;
+	//Setear la posicion de las pelotas y su velocidad.
 	for (int i = 0; i != 5; i++)
 	{
 		for (int j = 0; j != i + 1; j++)
@@ -110,15 +111,15 @@ void Game::pollEvents()
 	{
 		switch (sfmlEvent.type)
 		{
-		case sf::Event::Closed:
+		case sf::Event::Closed: //Cierre del juego.
 			window->close();
 			break;
-		case sf::Event::KeyPressed:
+		case sf::Event::KeyPressed: //Pausa
 			if (sfmlEvent.key.code == sf::Keyboard::Escape)
 			{
 				gui->gamePaused = 1 - gui->gamePaused;
 			}
-		case sf::Event::MouseButtonPressed:
+		case sf::Event::MouseButtonPressed: //Chequeo del mouse hacia una de las pelotas.
 			if (sfmlEvent.mouseButton.button == sf::Mouse::Right)
 			{
 				if (black->checkCollisionPoint(m_mouse))
@@ -136,7 +137,7 @@ void Game::pollEvents()
 				}
 			}
 			break;
-		case sf::Event::MouseButtonReleased:
+		case sf::Event::MouseButtonReleased: //Chequea cuando el mouse esta seleccionando y arrastrando con una pelota.
 			if (sfmlEvent.mouseButton.button == sf::Mouse::Right && dragged)
 			{
 				draggedBall->setVelocity(sf::Vector2f((draggedBall->getPosition().x - m_mouse.x),
@@ -157,13 +158,13 @@ void Game::pollEvents()
 
 void Game::collisionCircleLine(Ball* circle, Line* line)
 {
-	sf::Vector2f p = sf::Vector2f(circle->getPosition());	//center of circle
-	sf::Vector2f s = line->getPoints()[0].position;			//point at start of line
-	sf::Vector2f e = line->getPoints()[1].position;			//point at ent of line
+	sf::Vector2f p = sf::Vector2f(circle->getPosition());	//Centro del circulo
+	sf::Vector2f s = line->getPoints()[0].position;			//Punto de inciio de la linea
+	sf::Vector2f e = line->getPoints()[1].position;			//Punto final de la linea.
 	sf::Vector2f ps = p - s;
 	sf::Vector2f se = e - s;
 	float lengthLine = (e.x - s.x) * (e.x - s.x) + (e.y - s.y) * (e.y - s.y);
-	float t = ((ps.x * se.x) + (ps.y * se.y)) / lengthLine; //point of normal on line
+	float t = ((ps.x * se.x) + (ps.y * se.y)) / lengthLine; //Punto normal de la linea.
 	sf::Vector2f st;
 	st.x = s.x + t * se.x;
 	st.y = s.y + t * se.y;
@@ -180,7 +181,7 @@ void Game::collisionCircleLine(Ball* circle, Line* line)
 		circle->getVelocity().y * tangential.y;
 
 	float overlap = distanceBetween - circle->getRadius();
-	if (distanceBetween <= circle->getRadius())
+	if (distanceBetween <= circle->getRadius()) //Si hubo colision, setea la posicion calculando las variables de la pelota y direccion de la misma.
 	{
 		if (t > -0.f && t < 1.f)
 		{
@@ -213,7 +214,7 @@ void Game::collisionCircleHole(Ball* circle, Line* hole)
 	sf::Vector2f distance = positionCircle - holeCircleDistance;
 	float distanceBetween = sqrtf(distance.x * distance.x + distance.y * distance.y);
 
-	if (distanceBetween <= circle->getRadius() && (circleDistance > -0.f && circleDistance < 1.f))
+	if (distanceBetween <= circle->getRadius() && (circleDistance > -0.f && circleDistance < 1.f)) //Si hubo colision, suma un punto al jugador y mueve la pelota a la esquina de la pantalla.
 	{
 
 		playSFX(CIRCLEHOAL, circle);
@@ -232,9 +233,8 @@ void Game::collisionCircles(Ball* ball1, Ball* ball2)
 	float distanceBetween = (sqrtf((distance.x * distance.x) + (distance.y * distance.y)));
 	if (ball1 != ball2)
 	{
-		if (distanceBetween < (ball1->getRadius() + ball2->getRadius()))
+		if (distanceBetween < (ball1->getRadius() + ball2->getRadius())) //Calculos para la colision entre las pelotas.
 		{
-
 			float overlap = (distanceBetween - ball1->getRadius() - ball2->getRadius()) / 2.f;
 			float moveX = (overlap * (ball1->getPosition().x - ball2->getPosition().x) / distanceBetween);
 			float moveY = (overlap * (ball1->getPosition().y - ball2->getPosition().y) / distanceBetween);

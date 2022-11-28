@@ -1,3 +1,4 @@
+#pragma once
 #include "Ball.h"
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/PrimitiveType.hpp>
@@ -5,7 +6,7 @@
 
 void Ball::initVariables()
 {
-	MAX_POINTS = 20;
+	Max_Points = 20;
 	Friction = 1.f;
 	COLOR_SHAPE = sf::Color::Red;
 
@@ -16,7 +17,7 @@ void Ball::initVariables()
 	m_acceleration = sf::Vector2f(0.f, 0.f);
 	m_vertices.setPrimitiveType(sf::TrianglesFan);
 	m_vertices.clear();
-	m_vertices.resize(MAX_POINTS);
+	m_vertices.resize(Max_Points);
 	m_color = COLOR_SHAPE;
 	m_mass = m_radius;
 	M_PI = 3.14f;
@@ -28,10 +29,10 @@ void Ball::initShape()
 	float x = 0.f;
 	float y = 0.f;
 
-	for (unsigned long i = 0; i != MAX_POINTS - 1; i++)
+	for (unsigned long i = 0; i != Max_Points - 1; i++)
 	{
-		x = m_center.x + m_radius * cos(((360.f) / (static_cast<float>(MAX_POINTS - 2)) * i + m_angle) * M_PI / 180.f);
-		y = m_center.y + m_radius * sin(((360.f) / (static_cast<float>(MAX_POINTS - 2)) * i + m_angle) * M_PI / 180.f);
+		x = m_center.x + m_radius * cos(((360.f) / (static_cast<float>(Max_Points - 2)) * i + m_angle) * M_PI / 180.f);
+		y = m_center.y + m_radius * sin(((360.f) / (static_cast<float>(Max_Points - 2)) * i + m_angle) * M_PI / 180.f);
 		m_vertices[i] = sf::Vertex(sf::Vector2f(x, y), m_color);
 	}
 }
